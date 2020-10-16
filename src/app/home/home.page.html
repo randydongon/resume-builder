@@ -1,20 +1,385 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      Resume
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
-  </ion-header>
+  </ion-header> -->
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="8" offset-md="2">
+          <ion-card>
+            <ion-card-header>
+
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <ion-card-title>
+                  Resume
+                </ion-card-title>
+                <div class="divimg" id="divimg">
+                  
+                    <input style="display: none;" type="file" accept="image/*" capture="camera" (change)="handleImage($event)"
+                      id="fileInput" />
+                    <label class="label-file-input" for="fileInput" icon-only ion-button>
+                      <ion-icon class="ion-cam" name="camera"></ion-icon>
+                    </label>              
+
+
+                </div>
+
+              </div>
+            </ion-card-header>
+
+            <ion-card-content>
+
+              <h2 style="text-align:left; color:black">PERSONAL DATA</h2>
+              <ion-col size-md="4">
+                <ion-item>
+                  <ion-label color='medium' position="floating">Position</ion-label>
+                  <ion-input type="text" inputmode="text" id="input-first" [(ngModel)]="position"></ion-input>
+                </ion-item>
+              </ion-col>
+
+              <ion-row id="input-name">
+                <ion-col>
+                  <ion-item>
+                    <ion-label color='medium' position="floating">First name</ion-label>
+                    <ion-input type="text" inputmode="text" id="input-first" [(ngModel)]="firstName"></ion-input>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col>
+                  <ion-item>
+                    <ion-label color='medium' position="floating">Last name</ion-label>
+                    <ion-input type="text" inputmode="text" id="input-last" [(ngModel)]="lastName"></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+
+              <ion-col>
+                <ion-item lines="none">
+                  <ion-label color='medium' position="stacked">Say Somthing About Your Self</ion-label>
+                  <ion-textarea rows='3' style="border: 1px solid #ccc; border-radius: 1rem; padding: 0 1rem;"
+                    [(ngModel)]="aboutYourSelf" inputmode="text" type='text' id="input-aboutyourself"></ion-textarea>
+                </ion-item>
+              </ion-col>
+
+              <ion-item>
+                <ion-label color='medium' position="floating">Address</ion-label>
+                <ion-input id="input-padd" [(ngModel)]="personAdd"></ion-input>
+              </ion-item>
+
+              <ion-row>
+
+                <ion-col>
+                  <ion-item>
+                    <ion-label color='medium' position="floating">Gender</ion-label>
+                    <ion-input id="input-gender" [(ngModel)]="gender"></ion-input>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col>
+                  <ion-item>
+                    <ion-label color='medium' position="floating">Nationality</ion-label>
+                    <ion-input [(ngModel)]="nationality" id="input-nationality"></ion-input>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col>
+                  <ion-item>
+                    <ion-label color='medium' position="stacked">Date of Birth</ion-label>
+                    <ion-input [(ngModel)]="birthDate" inputmode="date" type="date" id="input-birthdate"></ion-input>
+                  </ion-item>
+                </ion-col>
+
+              </ion-row>
+
+              <ion-col>
+                <ion-item>
+                  <ion-label color='medium' position="floating">Birth Place</ion-label>
+                  <ion-input [(ngModel)]="birthPlace" type="text" id="input-birthplace"></ion-input>
+                </ion-item>
+              </ion-col>
+
+              <ion-row>
+                <ion-col>
+                  <ion-item>
+                    <ion-label color='medium' position="floating">Mobile Number</ion-label>
+                    <ion-input [(ngModel)]="mobileNumber" inputmode="tel" type="tel" id="input-mobilenumber">
+                    </ion-input>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col>
+                  <ion-item>
+                    <ion-label color='medium' position="floating">Email Address</ion-label>
+                    <ion-input [(ngModel)]="emailAdd" inputmode="email" type="email" id="input-email"></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+
+              <div style="margin-top: 1rem; margin-bottom: 1rem; border-bottom: 1px solid #eee;"></div>
+              <div style="text-align: left;">
+                <h2 style="color: black;">PROFESSIONAL SKILLS</h2>
+                <ion-item lines='none'>
+                  <ion-label color='medium' position="stacked">Write your expertise below</ion-label>
+                  <ion-textarea [(ngModel)]="proSkills" style='border: 1px solid #eee;' rows='6' id="input-expertise">
+                  </ion-textarea>
+                </ion-item>
+              </div>
+              <!-- start Experience -->
+              <div style="display: flex; margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1rem;">
+                <h2 style="color: black;">EXPERIENCE</h2>
+              </div>
+
+              <ion-list>
+                <div class="div-experience">
+                  <ion-row>
+                    <ion-col size='12' size-md='7'>
+                      <ion-item>
+                        <ion-label color='medium' position="floating">Company</ion-label>
+                        <ion-input [(ngModel)]="companyA" inputmode="text" type='text' id="input-companyA"></ion-input>
+                      </ion-item>
+                    </ion-col>
+
+
+                    <ion-col>
+                      <ion-item lines='none'>
+                        <ion-item>
+                          <ion-label color='medium' position="floating">From</ion-label>
+                          <ion-input [(ngModel)]="yearFromA" inputmode="text" type='text' id="input-yearFromA">
+                          </ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                          <ion-label color='medium' position="floating">To</ion-label>
+                          <ion-input [(ngModel)]="yearToA" inputmode="text" type='text' id="input-yearToA"></ion-input>
+                        </ion-item>
+
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-col>
+                    <ion-item>
+                      <ion-label color='medium' position="floating">Address</ion-label>
+                      <ion-input [(ngModel)]="addressA" inputmode="text" type='text' id="input-addressA"></ion-input>
+                    </ion-item>
+                  </ion-col>
+
+                  <ion-col>
+                    <ion-item lines="none">
+                      <ion-label color='medium' position="stacked">Duties and Responsibilities</ion-label>
+                      <ion-textarea rows='3' style="border: 1px solid #ccc; border-radius: 1rem; padding: 0 1rem;"
+                        [(ngModel)]="dutiesA" inputmode="text" type='text' id="input-dutiesA"></ion-textarea>
+                    </ion-item>
+                  </ion-col>
+                </div>
+
+                <div class="div-experience">
+                  <ion-row>
+                    <ion-col size='12' size-md='7'>
+                      <ion-item>
+                        <ion-label color='medium' position="floating">Company</ion-label>
+                        <ion-input [(ngModel)]="companyB" inputmode="text" type='text' id="input-companyB"></ion-input>
+                      </ion-item>
+                    </ion-col>
+
+                    <ion-col>
+                      <ion-item lines='none'>
+                        <ion-item>
+                          <ion-label color='medium' position="floating">From</ion-label>
+                          <ion-input [(ngModel)]="yearFromB" inputmode="text" type='text' id="input-yearFromB">
+                          </ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                          <ion-label color='medium' position="floating">To</ion-label>
+                          <ion-input [(ngModel)]="yearToB" inputmode="text" type='text' id="input-yearTob"></ion-input>
+                        </ion-item>
+
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-col>
+                    <ion-item>
+                      <ion-label color='medium' position="floating">Address</ion-label>
+                      <ion-input [(ngModel)]="addressB" inputmode="text" type='text' id="input-addressB"></ion-input>
+                    </ion-item>
+                  </ion-col>
+
+                  <ion-col>
+                    <ion-item lines="none">
+                      <ion-label color='medium' position="stacked">Duties and Responsibilities</ion-label>
+                      <ion-textarea rows='3' style="border: 1px solid #ccc; border-radius: 1rem; padding: 0 1rem;"
+                        [(ngModel)]="dutiesB" inputmode="text" type='text' id="input-dutiesB"></ion-textarea>
+                    </ion-item>
+                  </ion-col>
+                </div>
+
+                <div class="div-experience">
+                  <ion-row>
+                    <ion-col size='12' size-md='7'>
+                      <ion-item>
+                        <ion-label color='medium' position="floating">Company</ion-label>
+                        <ion-input [(ngModel)]="companyC" inputmode="text" type='text' id="input-companyC"></ion-input>
+                      </ion-item>
+                    </ion-col>
+
+                    <ion-col>
+                      <ion-item lines='none'>
+                        <ion-item>
+                          <ion-label color='medium' position="floating">From</ion-label>
+                          <ion-input [(ngModel)]="yearFromC" inputmode="text" type='text' id="input-yearFromC">
+                          </ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                          <ion-label color='medium' position="floating">To</ion-label>
+                          <ion-input [(ngModel)]="yearToC" inputmode="text" type='text' id="input-toC"></ion-input>
+                        </ion-item>
+
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-col>
+                    <ion-item>
+                      <ion-label color='medium' position="floating">Address</ion-label>
+                      <ion-input [(ngModel)]="addressC" inputmode="text" type='text' id="input-addressC"></ion-input>
+                    </ion-item>
+                  </ion-col>
+
+                  <ion-col>
+                    <ion-item lines="none">
+                      <ion-label color='medium' position="stacked">Duties and Responsibilities</ion-label>
+                      <ion-textarea rows='3' style="border: 1px solid #ccc; border-radius: 1rem; padding: 0 1rem;"
+                        [(ngModel)]="dutiesC" inputmode="text" type='text' id="input-dutiesC"></ion-textarea>
+                    </ion-item>
+                  </ion-col>
+                </div>
+
+              </ion-list>
+              <!-- end Experience -->
+
+              <div style="display: flex; margin-top: 1rem 0rem;">
+                <h2 style="color: black;">EDUCATION</h2>
+              </div>
+
+              <h3 style='text-align: center; '>ELEMENTARY</h3>
+
+              <ion-row>
+                <ion-col size='12' size-md='6'>
+                  <ion-item style='display: flex; width: 100%;'>
+                    <ion-label color='medium' position='floating'>Elementary</ion-label>
+                    <ion-input [(ngModel)]="elementary" type='text' inputmode="text" id="input-elementary"></ion-input>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col size-md='3'>
+                  <ion-item>
+                    <ion-label color='medium' position='floating'>Year</ion-label>
+                    <ion-input [(ngModel)]="yearElemFrom" type='text' id="input-yearelem" placeholder="From">
+                    </ion-input>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col size-md='3'>
+                  <ion-item>
+                    <ion-label color='medium' position='floating'>Year</ion-label>
+                    <ion-input [(ngModel)]="yearElemTo" type='text' id="input-yearelem" placeholder="To"></ion-input>
+                  </ion-item>
+                </ion-col>
+
+              </ion-row>
+
+              <ion-item>
+                <ion-label color='medium' position='floating'>Address</ion-label>
+                <ion-input [(ngModel)]="addressElem" type='text' inputmode="text" id="input-addelem"></ion-input>
+              </ion-item>
+
+              <h3 style='text-align: center; margin: 1rem 0rem;'>SECONDARY</h3>
+              <ion-row>
+                <ion-col size='12' size-md='6'>
+                  <ion-item style='display: flex; width: 100%;'>
+                    <ion-label color='medium' position='floating'>Secondary</ion-label>
+                    <ion-input [(ngModel)]="secondary" type='text' inputmode="text" id="input-second"></ion-input>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col size-md='3'>
+                  <ion-item>
+                    <ion-label color='medium' position='floating'>Year</ion-label>
+                    <ion-input [(ngModel)]="yearSecFrom" type='text' id="input-yearsec" placeholder="From"></ion-input>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col size-md='3'>
+                  <ion-item>
+                    <ion-label color='medium' position='floating'>Year</ion-label>
+                    <ion-input [(ngModel)]="yearSecTo" type='text' id="input-yearsec" placeholder="To"></ion-input>
+                  </ion-item>
+                </ion-col>
+
+              </ion-row>
+
+              <ion-item>
+                <ion-label color='medium' position='floating'>Address</ion-label>
+                <ion-input [(ngModel)]="addressSec" type='text' inputmode="text" id="input-addsec"></ion-input>
+              </ion-item>
+
+              <h3 style='text-align: center; margin: 1rem 0rem;'>TERTIARY</h3>
+              <ion-row>
+                <ion-col size='12' size-md='6'>
+                  <ion-item style='display: flex; width: 100%;'>
+                    <ion-label color='medium' position='floating'>College</ion-label>
+                    <ion-input [(ngModel)]="college" type='text' inputmode="text" id="input-college"></ion-input>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col size-md='3'>
+                  <ion-item>
+                    <ion-label color='medium' position='floating'>Year</ion-label>
+                    <ion-input [(ngModel)]="yearColFrom" type='text' id="input-yearcol" placeholder="From"></ion-input>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col size-md='3'>
+                  <ion-item>
+                    <ion-label color='medium' position='floating'>Year</ion-label>
+                    <ion-input [(ngModel)]="yearColTo" type='text' id="input-yearcol" placeholder="To"></ion-input>
+                  </ion-item>
+                </ion-col>
+
+              </ion-row>
+
+              <ion-item>
+                <ion-label color='medium' position='floating'>Address</ion-label>
+                <ion-input [(ngModel)]="addressCollege" type='text' inputmode="text" id="input-addcol"></ion-input>
+              </ion-item>
+
+              <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 2rem;">
+                <ion-button (click)="handleSave()" id='btnsave'>Save <ion-icon slot="end" name='save-sharp'></ion-icon>
+                </ion-button>
+
+                <ion-button (click)="handlePrint()" style="margin-left: 2rem;" id='btnprint'>Print <ion-icon slot="end"
+                    name='print-sharp'></ion-icon>
+                </ion-button>
+              </div>
+
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>
